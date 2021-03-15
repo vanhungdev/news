@@ -76,7 +76,7 @@ namespace news_FE.consts
         /// <summary>
         ///  Url Edit Post POST
         /// </summary>
-        public const string urlEditPost = domain+ "admin/Posts/EditPost";
+        public const string urlEditPost = domain+ "admin/Posts/editPost";
         /// <summary>
         /// url change status method => GET
         /// </summary>
@@ -108,7 +108,39 @@ namespace news_FE.consts
         /// <summary>
         ///  Url getAll User method => GET
         /// </summary>
-        public const string urlGetAllUser = domain+"admin/Users/getAllUser";
+        public const string urlGetAllUser = domain+ "admin/Users/getAllUser";
+        /// <summary>
+        /// url change status method => GET
+        /// </summary>
+        public const string urlChangeStatusUser = domain + "admin/Users/ChangeStatus";
+        /// <summary>
+        ///  Url delete method => GET
+        /// </summary>
+        public const string urlDeleteUser = domain + "admin/Users/delete/";
+        /// <summary>
+        ///  Url detrash User  method => GET
+        /// </summary>
+        public const string urlDeTrashUser = domain + "admin/Users/DeTrash/";
+        /// <summary>
+        ///  Url url retrash  method => GET
+        /// </summary>
+        public const string urlReTrashUser = domain + "admin/Users/ReTrash/";
+        /// <summary>
+        ///  Url url retrash  method => GET
+        /// </summary>
+        public const string urlGetUserById = domain + "admin/Users/findUserById/";
+        /// <summary>
+        ///  Url url retrash  method => GET
+        /// </summary>
+        public const string urlGetAllUserTrash = domain + "admin/Users/getAllTopicTrash";
+        /// <summary>
+        ///  Url url retrash  method => GET
+        /// </summary>
+        public const string urlEditUser = domain + "admin/Users/editUser";
 
+        
+
+        ///////////////////////////////////////////////////////////////////////////
+        public const string urlGetAllRole = domain + "admin/Users/getAllRole";
     }
 }

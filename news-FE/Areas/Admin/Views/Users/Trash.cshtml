@@ -1,0 +1,71 @@
+﻿@model IEnumerable<news_FE.Models.User>
+
+@{
+    ViewBag.Title = "Trash";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card card-title bg-white p-1">
+    <div class="row">
+        <div class="col-md-6 "> <h5 class="pl-2 mt-2 text-blues">Thùng rác user</h5> </div>
+        <div class="col-md-6 m-0">
+            <ol class="breadcrumb bg-white float-sm-right m-0">
+                <li class="breadcrumb-item m-0"><a href="~/Bdmin">Home</a></li>
+                <li class="breadcrumb-item active m-0">thùng rác User</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<section class=" ">
+    <div class=" bg-white card  p-3">
+        <div class="row justify-content-end">
+            <div class="col-md-3">
+                <div class=" float-right"> 
+                    <a class="text-white btn-sm btn-danger " href="~/Admin/Users">Thoát<i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9  w-100 ">
+                @Html.Partial("_MessgeAlert")
+            </div>
+            <div class="col-md-12 p-3">
+
+                <table class="table px-3 table-striped table-bordered dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Full name</th>
+                            <th>Tên Đăng nhập</th>
+                            <th>Email</th>
+                            <th>Ngày Tạo</th>
+                            <th>Chức Năng</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td><a class=" font-weight-bold card-link " href=""> @Html.DisplayFor(modelItem => item.fullname)</a></td>
+                            <td><a class=" font-weight-bold card-link " href=""> @Html.DisplayFor(modelItem => item.username)</a></td>
+                            <td> @Html.DisplayFor(modelItem => item.email)</td>
+                            <td style="font-size:14px;">@item.created_at.ToString("dd/MM/yyyy hh:mm tt")</td>
+                            <td>
+                                <a title="Khôi phục" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-light text-primary border " href="@Url.Action("Retrash", "Users", new { id = item.ID })"> <i class="fas fa-undo"></i></a>
+                                <a title="Xóa vĩnh viễn " data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-light text-danger border" href="@Url.Action("Delete", "Users", new { id = item.ID })">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                            <td class="text-cam ">@Html.DisplayFor(modelItem => item.ID)</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $("#user").addClass("active");
+</script>

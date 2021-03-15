@@ -691,6 +691,8 @@
     <Content Include="Areas\Admin\Views\Auth\login.cshtml" />
     <Content Include="Areas\Admin\Views\Auth\Unauthorized.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_mess.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -717,6 +719,7 @@
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\ObjectResult.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

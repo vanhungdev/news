@@ -21,14 +21,14 @@
         <div class="row justify-content-end">
             <div class="col-md-3">
                 <div class=" pt-1 ml-5">
-                    <a class="text-white btn-sm btn-success" href="~/Bdmin/user/Create">Add User <i class="fas fa-plus"></i></a>
-                    <a class="text-white btn-sm btn-danger " href="~/Bdmin/user/trash">Thùng rác<i class="fas fa-trash"></i></a>
+                    <a class="text-white btn-sm btn-success" href="~/Admin/users/Create">Add User <i class="fas fa-plus"></i></a>
+                    <a class="text-white btn-sm btn-danger " href="~/Admin/users/trash">Thùng rác<i class="fas fa-trash"></i></a>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-9  w-100 ">
-                @*@Html.Partial("_MessgeAlert")*@
+                @Html.Partial("_MessgeAlert")
             </div>
             <div class="col-md-12 p-3">
 
@@ -48,7 +48,7 @@
                         @foreach (var item in Model)
                         {
                             int access = item.access;
-                            string khachhang = "Khách hàng";
+                            string khachhang = "Đọc giả";
                             string ngqt = "Người quản trị";
                             <tr>
 
@@ -56,23 +56,30 @@
                                 <td><a class=" font-weight-bold card-link " href=""> @Html.DisplayFor(modelItem => item.username)</a></td>
                                 <td> @Html.DisplayFor(modelItem => item.email)</td>
                                 <td>
-                                    @if (access == 1)
-                                    {@khachhang}
-                                else
-                                { @ngqt}
+                                    @if (access == 10)
+                                    {
+                                    <span class="font-weight-bold text-success">@khachhang</span>
+                                        
+                                    }
+                                    else
+                                    {
+                                    <span class="font-weight-bold text-warning"> @ngqt</span>
+                                       
+
+                                    }
                                 </td>
                                 <td style="font-size:14px;">@item.created_at.ToString("dd/MM/yyyy hh:mm tt")</td>
                                 <td>
                                     @if (item.status == 1)
                                     {
-                                        <a class="btn btn-sm btn-light text-success border a33" href="@Url.Action("Status", "User", new { id = item.ID })"> <i class="fas fa-toggle-on"></i> </a>
+                                        <a class="btn btn-sm btn-light text-success border a33" href="@Url.Action("Status", "Users", new { id = item.ID ,Status = item.status })"> <i class="fas fa-toggle-on"></i> </a>
                                     }
                                     else
                                     {
-                                        <a class="btn btn-sm btn-light text-danger border a33" href="@Url.Action("Status", "User", new { id = item.ID })"> <i class="fas fa-toggle-off"></i> </a>
+                                        <a class="btn btn-sm btn-light text-danger border a33" href="@Url.Action("Status", "Users", new { id = item.ID, Status = item.status })"> <i class="fas fa-toggle-off"></i> </a>
                                     }
-                                    <a class="btn btn-sm btn-light text-danger border" href="@Url.Action("Deltrash", "User", new { id = item.ID })"><i class="fas fa-trash-alt"></i></a>
-                                    <a class="btn btn-sm btn-light text-warning border" href="@Url.Action("Edit", "User", new { id = item.ID })">
+                                    <a class="btn btn-sm btn-light text-danger border" href="@Url.Action("Detrash", "Users", new { id = item.ID })"><i class="fas fa-trash-alt"></i></a>
+                                    <a class="btn btn-sm btn-light text-warning border" href="@Url.Action("Edit", "Users", new { id = item.ID })">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>

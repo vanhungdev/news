@@ -20,8 +20,7 @@ namespace news_FE.Areas.Admin.Controllers
         public ActionResult Index()
         {
             List<Post> ListPost = null;
-
-            string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllPost, null);
+            string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllPostAdmin, null);
             try
             {
                 ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons);
@@ -29,7 +28,7 @@ namespace news_FE.Areas.Admin.Controllers
             catch
             {
                 var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(getJsonRepons);
-                Message.set_flash("Mã lỗi: "+objectResult.code + "  Message: "+objectResult.message.Message, "danger");
+                Message.set_flash(objectResult.message.Message, "danger");
                 return RedirectToAction("Unauthorized","Auth");
             }
             if (ListPost != null)

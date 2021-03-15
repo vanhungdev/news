@@ -28,7 +28,7 @@ namespace news_FE.Areas.Admin.Controllers
             };
             string authRequest = SendRequest.sendRequestPOSTwithJsonContent(ApiUrl.urlAuthen, loginInfo.ToString());
             ObjectResult<User> repons = JsonConvert.DeserializeObject<ObjectResult<User>>(authRequest);
-            if(repons.code ==200)
+            if(repons.code == 200)
             {
                 Session["access_token"] = repons.data.token;
                 return Redirect("~/admin");
@@ -48,7 +48,7 @@ namespace news_FE.Areas.Admin.Controllers
         public ActionResult logout()
         {
             Session["access_token"] = "";
-            return View();
+            return RedirectToAction("login");
         }
   
     }

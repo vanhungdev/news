@@ -713,9 +713,7 @@
     </Compile>
     <Compile Include="library\Message.cs" />
     <Compile Include="library\Mystring.cs" />
-    <Compile Include="Models\AuthRepons.cs" />
     <Compile Include="Models\AuthRequest.cs" />
-    <Compile Include="Models\CUDResult.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\ObjectResult.cs" />
     <Compile Include="Models\Post.cs" />

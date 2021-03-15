@@ -1,6 +1,5 @@
 ﻿using news_FE.consts;
 using news_FE.library;
-using news_FE.models;
 using news_FE.Models;
 using news_FE.Request;
 using news_FE.Utilities;
@@ -55,15 +54,15 @@ namespace news_FE.Areas.Admin.Controllers
             };
 
             string EditResult = SendRequest.sendRequestPOSTwithJsonContent(ApiUrl.urlEditTopic, topicJson.ToString());
-            CUDResult result = JConvert.jsonconvert<CUDResult>(EditResult);
-            if (result.status == 1)
+            var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(EditResult);
+            if (objectResult.code == 200)
             {
-                Message.set_flash(result.message, "success");
+                Message.set_flash(objectResult.message.Message, "success");
 
             }
             else
             {
-                Message.set_flash(result.message, "danger");
+                Message.set_flash(objectResult.message.Message, "danger");
             }
 
             return RedirectToAction("index");
@@ -92,32 +91,31 @@ namespace news_FE.Areas.Admin.Controllers
                 { "Updated_by", topic.Created_by},
             };
             string EditResult = SendRequest.sendRequestPOSTwithJsonContent(ApiUrl.urlCreateTopic, topicJson.ToString());
-            CUDResult result = JConvert.jsonconvert<CUDResult>(EditResult);
-            if (result.status == 1)
+            var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(EditResult);
+            if (objectResult.code == 200)
             {
-                Message.set_flash(result.message, "success");
-                return RedirectToAction("index");
+                Message.set_flash(objectResult.message.Message, "success");
+
             }
             else
             {
-                Message.set_flash(result.message, "danger");
-                string getJsonAllTopicRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllTopic, null);
-                ViewBag.listtopic = JsonConvert.DeserializeObject<List<Topic>>(getJsonAllTopicRepons);
-                return View();
+                Message.set_flash(objectResult.message.Message, "danger");
             }
+            return RedirectToAction("index");
         }
         public ActionResult Status(int Id, int Status)
         {
 
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlChangeStatus + "?Id=" + Id + "&Status=" + Status, null);
-            CUDResult result = JConvert.jsonconvert<CUDResult>(getJsonRepons);
-            if (result.status == 1)
+            var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(getJsonRepons);
+            if (objectResult.code == 200)
             {
-                Message.set_flash(result.message, "success");
+                Message.set_flash(objectResult.message.Message, "success");
+
             }
             else
             {
-                Message.set_flash(result.message, "danger");
+                Message.set_flash(objectResult.message.Message, "danger");
             }
             return RedirectToAction("index");
         }
@@ -125,42 +123,43 @@ namespace news_FE.Areas.Admin.Controllers
         {
 
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlDeTrash+"?Id="+ Id, null);
-            CUDResult result = JConvert.jsonconvert<CUDResult>(getJsonRepons);
-            if (result.status == 1)
+            var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(getJsonRepons);
+            if (objectResult.code == 200)
             {
-                Message.set_flash(result.message, "success");
+                Message.set_flash(objectResult.message.Message, "success");
             }
             else
             {
-                Message.set_flash(result.message, "danger");
+                Message.set_flash(objectResult.message.Message, "danger");
             }
             return RedirectToAction("index");
         }
         public ActionResult reTrash(int Id)
         {
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlReTrash + "?Id=" + Id, null);
-            CUDResult result = JConvert.jsonconvert<CUDResult>(getJsonRepons);
-            if (result.status == 1)
+            var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(getJsonRepons);
+            if (objectResult.code == 200)
             {
-                Message.set_flash(result.message, "success");
+                Message.set_flash(objectResult.message.Message, "success");
             }
             else
             {
-                Message.set_flash(result.message, "danger");
+                Message.set_flash(objectResult.message.Message, "danger");
             }
             return RedirectToAction("index");
         }
         public ActionResult delete(int Id)
         {
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlDelete + "?Id=" + Id, null);
-            CUDResult result = JConvert.jsonconvert<CUDResult>(getJsonRepons);
-            if (result.status == 1)
+            var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(getJsonRepons);
+            if (objectResult.code == 200)
             {
-                Message.set_flash(result.message, "success");
+                Message.set_flash(objectResult.message.Message, "success");
+
             }
             else
             {
-                Message.set_flash(result.message, "danger");
+                Message.set_flash(objectResult.message.Message, "danger");
             }
             return RedirectToAction("index");
         }

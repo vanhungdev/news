@@ -689,6 +689,8 @@
     <Content Include="Areas\Admin\Views\Topics\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Auth\login.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Unauthorized.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_mess.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

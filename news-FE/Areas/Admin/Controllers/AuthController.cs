@@ -40,12 +40,16 @@ namespace news_FE.Areas.Admin.Controllers
             }
       
         }
-
+        public ActionResult Unauthorized()
+        {
+            return View("Unauthorized");
+        }
         // GET: Admin/Auth
         public ActionResult logout()
         {
             Session["access_token"] = "";
             return View();
         }
+  
     }
 }

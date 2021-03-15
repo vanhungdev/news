@@ -19,10 +19,30 @@ namespace news_FE.Areas.Admin.Controllers
     {
         // GET: Admin/Posts
         public ActionResult Index()
-        {          
+        {
+            List<Post> ListPost = null;
+
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllPost, null);
-            var ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons);
-            return View(ListPost.OrderByDescending(m=>m.ID));           
+            try
+            {
+                ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons);
+            }
+            catch
+            {
+                var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(getJsonRepons);
+                Message.set_flash("Mã lỗi: "+objectResult.code + "  Message: "+objectResult.message.Message, "danger");
+                return RedirectToAction("Unauthorized","Auth");
+            }
+            if (ListPost != null)
+            {
+                return View(ListPost.OrderByDescending(m => m.ID));
+            }
+            else
+            {
+                Message.set_flash("Đã xảy ra lỗi", "danger");
+                return RedirectToAction("Unauthorized", "Auth");
+            }
+
         }
         public ActionResult Create()
         {
@@ -78,7 +98,7 @@ namespace news_FE.Areas.Admin.Controllers
             };
             string EditResult = SendRequest.sendRequestPOSTwithJsonContent(ApiUrl.urlCreatePost, PostJson.ToString());
             CUDResult result = JsonConvert.DeserializeObject<CUDResult>(EditResult);
-          
+
             if (result.status == 1)
             {
                 Message.set_flash(result.message, "success");
@@ -106,12 +126,12 @@ namespace news_FE.Areas.Admin.Controllers
         public ActionResult Edit(Post post, HttpPostedFileBase file)
         {
             file = Request.Files["img"];
-            string filename = file.FileName.ToString();          
+            string filename = file.FileName.ToString();
             if (filename.Equals("") == false)
             {
                 string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlFindTopicById + post.Topid, null);
                 Topic topic = JsonConvert.DeserializeObject<Topic>(getJsonRepons);
-                string slug = Mystring.ToSlug(post.Title.ToString())+DateTime.Now.ToString("-mmss");
+                string slug = Mystring.ToSlug(post.Title.ToString()) + DateTime.Now.ToString("-mmss");
                 string namecate = Mystring.ToStringNospace(topic.Name);
                 string ExtensionFile = Mystring.GetFileExtension(filename);
                 string namefilenew = namecate + "/" + slug + "." + ExtensionFile;

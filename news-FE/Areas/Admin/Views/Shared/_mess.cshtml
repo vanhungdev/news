@@ -1,0 +1,8 @@
+﻿@using news_FE.library;
+@using news_FE.Models;
+@if (Message.has_flash())
+{
+    MessageModel ms = Message.get_flash();   
+        <span class=" ml-3  text-@ms.msg_css  ">@ms.msg</span>
+}
+

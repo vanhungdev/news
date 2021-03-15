@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Unauthorized";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="container card">
+        <div class="card-body">
+
+            <div class="alert alert-danger alert-dismissible">
+              
+                <h5>@Html.Partial("_mess")</h5>
+                <span class="font-weight-bold">Nguyên nhân gây ra lỗi:</span>
+                <br>
+                <span>- Bạn không có quyền đăng nhập</span>
+                <br>
+                <span>- Bạn chưa đăng nhập</span>
+            </div>
+        </div>
+    </div>
+    </div>
+

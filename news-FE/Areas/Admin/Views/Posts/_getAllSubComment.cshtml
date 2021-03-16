@@ -1,0 +1,43 @@
+﻿@model  IEnumerable<news_FE.Models.Comment>
+
+@foreach (var item in Model)
+{
+    if (item.Status == 1)
+    {
+        <div class="geser " >
+            <div class="media">
+                <div class="media-left">
+                    <img src="https://i.ebayimg.com/images/g/vrAAAOSwpDdVU7C6/s-l400.jpg" class="media-object" style="width:40px">
+                </div>
+                <div class="media-body ml-3">
+                    <a href="@Url.Action("ChangeStatusHidenShowComment", "Posts", new { id = item.Id,status = item.Status, postId = item.PostId })" class="btn btn-sm  float-right "><i class="fas fa-eye text-info"></i></a>
+                    <h4 class="media-heading title text-warning m-0">@item.Name</h4>
+                    <span style="font-size:12px;" class="m-0 text-success">lúc: @item.Create_at.ToString("dd-MM-yyyy hh:mm:ss")</span>
+                    <p class="komen">
+                        @item.CommentDetail<br>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="geser " style="opacity:0.4;">
+            <div class="media">
+                <div class="media-left">
+                    <img src="https://i.ebayimg.com/images/g/vrAAAOSwpDdVU7C6/s-l400.jpg" class="media-object" style="width:40px">
+                </div>
+                <div class="media-body ml-3">
+                    <a href="@Url.Action("ChangeStatusHidenShowComment", "Posts", new { id = item.Id,status = item.Status, postId = item.PostId })" class="btn btn-sm  float-right " ><i class="fas fa-eye-slash text-danger"></i></a>
+                    <h4 class="media-heading title text-warning m-0">@item.Name</h4>
+                    <span style="font-size:12px;" class="m-0 text-success">lúc: @item.Create_at.ToString("dd-MM-yyyy hh:mm:ss")</span>
+                    <p class="komen">
+                        @item.CommentDetail<br>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    }
+}

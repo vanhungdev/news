@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<news_FE.Models.User>
 @{
-    ViewBag.Title = "Quản lý tài khoản";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+                /**/
+
+                ViewBag.Title = "Quản lý tài khoản";
+                Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="card card-title bg-white p-1">
@@ -58,13 +60,13 @@
                                 <td>
                                     @if (access == 10)
                                     {
-                                    <span class="font-weight-bold text-success">@khachhang</span>
-                                        
+                                        <span class="font-weight-bold text-success">@khachhang</span>
+
                                     }
                                     else
                                     {
-                                    <span class="font-weight-bold text-warning"> @ngqt</span>
-                                       
+                                        <span class="font-weight-bold text-warning"> @ngqt</span>
+
 
                                     }
                                 </td>

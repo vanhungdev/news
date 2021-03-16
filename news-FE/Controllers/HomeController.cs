@@ -1,4 +1,5 @@
-﻿using news_FE.Models;
+﻿using news_FE.consts;
+using news_FE.Models;
 using news_FE.Request;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,10 +15,10 @@ namespace news_FE.Controllers
     {
         // GET: Home
         public ActionResult Index()
-        {       
-            //string getJsonRepons = SendRequest.sendRequestGET("https://localhost:44313/api/Posts/getAllPost",null);
-            //var ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons);
-            return View("");
+        {
+            string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllPost, null);
+            var ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons);
+            return View();
         }
     }
 }

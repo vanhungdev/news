@@ -17,6 +17,7 @@ namespace news_FE
         protected void Session_Start()
         { 
             Session["Message"] = "";
+            Session["userName"] = "";
             Session["access_token"] = "";
         }
     }

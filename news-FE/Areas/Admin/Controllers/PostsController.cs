@@ -29,7 +29,7 @@ namespace news_FE.Areas.Admin.Controllers
             {
                 var objectResult = JsonConvert.DeserializeObject<ObjectResult<Post>>(getJsonRepons);
                 Message.set_flash(objectResult.message.Message, "danger");
-                return RedirectToAction("Unauthorized","Auth");
+                return RedirectToAction("Unauthorized", "Auth");
             }
             if (ListPost != null)
             {
@@ -105,9 +105,9 @@ namespace news_FE.Areas.Admin.Controllers
             {
 
                 Message.set_flash(objectResult.message.Message, "danger");
-               
+
             }
-           
+
             // call API all topic
             string getJsonAllTopicRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllTopic, null);
             ViewBag.listtopic = JsonConvert.DeserializeObject<List<Topic>>(getJsonAllTopicRepons);
@@ -117,6 +117,7 @@ namespace news_FE.Areas.Admin.Controllers
         {
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlFindPostById + id, null);
             Post List = JsonConvert.DeserializeObject<Post>(getJsonRepons);
+
 
             string getJsonAllTopicRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllTopic, null);
             ViewBag.listtopic = JsonConvert.DeserializeObject<List<Topic>>(getJsonAllTopicRepons);
@@ -246,6 +247,34 @@ namespace news_FE.Areas.Admin.Controllers
         {
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllPostTrash, null);
             var List = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons); return View(List);
+        }
+        public ActionResult _getAllComment(int id)
+        {
+            string getJsonReponsComment = SendRequest.sendRequestGET(ApiUrl.urlGetAllComment + id, null);
+            var list = JsonConvert.DeserializeObject<List<Comment>>(getJsonReponsComment).Where(m => m.ParentId ==0);
+            return View("getAllComment", list);
+        }
+        public ActionResult _getAllSubComment(int id,int parintId)
+        {
+            string getJsonReponsComment = SendRequest.sendRequestGET(ApiUrl.urlGetAllComment + id, null);
+            var list = JsonConvert.DeserializeObject<List<Comment>>(getJsonReponsComment).Where(m=>m.ParentId !=0 && m.ParentId == parintId);
+            return View("_getAllSubComment", list);
+        }
+        public ActionResult ChangeStatusHidenShowComment(int Id,int Status,int postId)
+        {
+            string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlChangeStatusComment + "?Id=" + Id + "&Status=" + Status, null);
+            var objectResult = JConvert.jsonconvert<ObjectResult<Comment>>(getJsonRepons);
+            if (objectResult.code == 200)
+            {
+                Message.set_flash(objectResult.message.Message, "success");
+                return RedirectToAction("Edit","Posts", new { @id = postId });
+            }
+            else
+            {
+                Message.set_flash(objectResult.message.Message, "danger");
+
+            }
+            return RedirectToAction("Edit", "Posts", new { @id = postId });
         }
     }
 }

@@ -142,5 +142,16 @@ namespace news_FE.consts
 
         ///////////////////////////////////////////////////////////////////////////
         public const string urlGetAllRole = domain + "admin/Users/getAllRole";
+
+        //////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// UR: GET all Comment từ ID bài viết
+        /// </summary>
+        public const string urlGetAllComment = domain + "api/Comment/GetAllCommentByPost/";
+
+        /// <summary>
+        /// URL Thay đổi trạng thái bình luận ẩn/hiện
+        /// </summary>
+        public const string urlChangeStatusComment = domain + "admin/Comment/ChangeStatusComment/";        
     }
 }

@@ -31,6 +31,8 @@ namespace news_FE.Areas.Admin.Controllers
             if(repons.code == 200)
             {
                 Session["access_token"] = repons.data.token;
+                //Session["userName"] =  repons.data.data.username+"";
+                //Session["fullName"] = repons.data.data.fullname + "";
                 return Redirect("~/admin");
             }
             else

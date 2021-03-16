@@ -105,9 +105,14 @@
                         @Html.DropDownListFor(model => model.Status, status, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                     </div>
+                    <div class="p-3 ">
+                        <h4>Bình luận</h4>                                                 
+                       @Html.Action("_getAllComment", "Posts",new { Id = Model.ID})
+                    </div>
                 </div>
             </div>
         }
+
     </div>
 </section>
 <script>
@@ -117,4 +122,5 @@
         $('.textarea').summernote()
     })
 </script>
+
 

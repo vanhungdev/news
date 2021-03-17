@@ -1,0 +1,25 @@
+﻿@model  IEnumerable<news_FE.Models.Comment>
+@{ 
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+
+        <div class="media ">
+            <div class="media-left">
+                <img src="https://i.ebayimg.com/images/g/vrAAAOSwpDdVU7C6/s-l400.jpg" class="media-object" style="width:40px">
+            </div>
+            <div class="media-body ml-3">
+                
+                <h4 class="media-heading title m-0">@item.Name</h4>
+                <span style="font-size:12px;" class="m-0 text-success">lúc: @item.Create_at.ToString("dd-MM-yyyy hh:mm:ss")</span>
+                <p class="komen">
+                    @item.CommentDetail<br>
+                    <a href="#">Trả lời</a>
+                </p>
+               
+            </div>
+        </div>
+   
+    @Html.Action("_getAllSubComment", "Modules", new { Id = item.PostId, parintId = item.Id })
+}

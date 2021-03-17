@@ -6,13 +6,13 @@
 <section class="pt-3">
     <div class="container  pt">
         <div class="row">
-            <div class="col-md-4 bg-white">
+            <div class="col-md-8 bg-white">
 
                 @foreach (var item in Model)
                 {
                     string title = item.Title;
                     <ul class="list-unstyled pagination border-top pt-3">
-                        <li><img width="120" src="~/public/images/post/@item.Img" alt=""></li>
+                        <li><img width="200" src="~/public/images/post/@item.Img" alt=""></li>
                         <li class="pl-3">
                             <a class="card-link text-dark" href="~/chi-tiet-bai-viet/@item.Slug">
                                 @if (title.Length > 70)
@@ -30,10 +30,7 @@
 
                     </ul>
                 }
-            </div>
-            <div class="col-md-5">
-                @Html.Action("_PostSuggest", "Modules")
-            </div>
+            </div>  
             <div class="col-md-3">
                 @Html.Action("_allCategory", "Modules")
             </div>

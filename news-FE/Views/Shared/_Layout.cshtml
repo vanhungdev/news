@@ -3,38 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+    <!-- header-->
+    <header class="container-fluid border-bottom bg-white">
+        <div class="container  ">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-dark ">
+                        <ul class="d-block mt-2 " style="font-size:14px;">
+                            <li class=" d-inline-block  pr-3"><i class="fas fa-phone-alt"></i> 0975271384</li>
+                            <li class="d-inline-block "><i class="fas fa-envelope"></i> vanhung3339@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                  //
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-secondary ">
+        <div class="collapse navbar-collapse container" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/">Trang chủ</a>
+                </li>
+                @Html.Action("_CategoryInMenu", "Modules")
+            </ul>
+            @*<form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>*@
+        </div>
+    </nav>
+    <!-- /navbar-->
+    @RenderBody()
+   
 </body>
 </html>

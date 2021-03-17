@@ -17,8 +17,8 @@ namespace news_FE.Controllers
         public ActionResult Index()
         {
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllPost, null);
-            var ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons);
-            return View();
+            var ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons).OrderByDescending(m=>m.ID).Where(m=>m.Status==1).Take(7);
+            return View(ListPost);
         }
     }
 }

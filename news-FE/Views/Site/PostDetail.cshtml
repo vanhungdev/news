@@ -1,0 +1,47 @@
+﻿@model news_FE.Models.Post
+@{
+    ViewBag.Title = "Chi tiết bài viết";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="p-3 ">
+                <form action="~/Site/sendComment" method="post">
+                    <h4>Bình luận</h4>
+                    <input type="hidden" name="PostId" value="@Model.ID" />
+                    <input type="hidden" name="parentId" value="0" />
+                    <input type="hidden" name="slug" value="@Model.Slug" />
+                    <div class="p-2">
+                        <label> Tên bạn</label>
+                        <input class="form-control" name="name" />
+                    </div>
+                    <div class="p-2">
+                        <label> Nội dung</label>
+                        <textarea class="form-control" name="commentDetail" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3"> <button class="btn btn-sm btn-info w-100 pt-1" type="submit">Gửi</button></div>
+                    @Html.Action("_getAllComment", "Modules", new { Id = Model.ID })
+                </form>
+            </div>
+        </div>
+        <div class="col-9 bg-light mt-3">
+            <h1 class="p-5">@Model.Title</h1>
+            <p class="text-center"> @Html.Raw(Model.Detail)</p>
+        </div>
+    </div>
+</div>
+<style>
+    .title {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .komen {
+        font-size: 14px;
+    }
+
+    .geser {
+        margin-left: 55px;
+        margin-top: 5px;
+    }
+</style>

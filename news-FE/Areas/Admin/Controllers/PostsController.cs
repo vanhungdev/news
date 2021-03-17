@@ -117,8 +117,6 @@ namespace news_FE.Areas.Admin.Controllers
         {
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlFindPostById + id, null);
             Post List = JsonConvert.DeserializeObject<Post>(getJsonRepons);
-
-
             string getJsonAllTopicRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllTopic, null);
             ViewBag.listtopic = JsonConvert.DeserializeObject<List<Topic>>(getJsonAllTopicRepons);
             return View(List);
@@ -241,7 +239,7 @@ namespace news_FE.Areas.Admin.Controllers
             {
                 Message.set_flash(objectResult.message.Message, "danger");
             }
-            return RedirectToAction("index");
+            return RedirectToAction("Trash");
         }
         public ActionResult Trash()
         {

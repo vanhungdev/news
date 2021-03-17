@@ -695,6 +695,7 @@
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\getAllComment.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\_getAllSubComment.cshtml" />
+    <Content Include="Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -712,6 +713,8 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="consts\ApiUrl.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -736,6 +739,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Site\PostDetail.cshtml" />
+    <Content Include="Views\Site\allPostBySlugCategory.cshtml" />
+    <Content Include="Views\Modules\_getAllComment.cshtml" />
+    <Content Include="Views\Modules\_getAllSubComment.cshtml" />
+    <Content Include="Views\Modules\_CategoryInMenu.cshtml" />
+    <Content Include="Views\Modules\_allCategory.cshtml" />
+    <Content Include="Views\Modules\_PostSuggest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

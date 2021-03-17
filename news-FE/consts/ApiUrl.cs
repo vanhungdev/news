@@ -36,6 +36,11 @@ namespace news_FE.consts
         /// </summary>
         public const string urlDelete = domain + "admin/Category/delete/";
         /// <summary>
+        ///  URL find category by slug => GET
+        /// </summary>
+        public const string urlFindCategoryBySlug = domain + "api/category/findBySlug/";
+
+        /// <summary>
         ///  Url detrash category  method => GET
         /// </summary>
         public const string urlDeTrash = domain + "admin/Category/DeTrash/";
@@ -68,7 +73,7 @@ namespace news_FE.consts
         /// <summary>
         ///  Url get post by category id + category id method => GET
         /// </summary>
-        public const string urlGetPostByCategoryId = domain+"api/Posts/getPostByCategoryId/";
+        public const string urlGetAllPostByCategoryId = domain+ "api/Posts/getallPostByCategoryId/";
         /// <summary>
         ///  Url create Post POST
         /// </summary>
@@ -148,6 +153,11 @@ namespace news_FE.consts
         /// UR: GET all Comment từ ID bài viết
         /// </summary>
         public const string urlGetAllComment = domain + "api/Comment/GetAllCommentByPost/";
+        /// <summary>
+        /// URL Thêm Comment
+        /// </summary>
+        public const string urlCreateComment = domain + "api/Comment/createComment";
+
 
         /// <summary>
         /// URL Thay đổi trạng thái bình luận ẩn/hiện

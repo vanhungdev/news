@@ -1,0 +1,25 @@
+﻿@model IEnumerable<news_FE.Models.Post>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <ul class="list-unstyled  border-top pt-3">
+        <li><img width="430" src="~/public/images/post/@item.Img" alt=""></li>
+        <li class="pl-3 row">
+            <a class="card-link text-dark" href="~/chi-tiet-bai-viet/@item.Slug">
+                @if (item.Title.Length > 70)
+                {
+                    <span class="font-weight-bold " style="font-size:25px;">@item.Title.Substring(0, 70) ....</span>
+                }
+                else
+                {
+                    <span class="font-weight-bold " style="font-size:25px;">@item.Title</span>
+                }
+            </a>
+            <br />
+            <span style="font-size:12px;" class="text-info"><i class="far fa-clock"></i> @item.Created_at</span>
+        </li>
+
+    </ul>
+}

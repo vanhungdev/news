@@ -1,25 +1,37 @@
 ﻿@model  IEnumerable<news_FE.Models.Comment>
-@{ 
+@{
     Layout = null;
 }
 @foreach (var item in Model)
 {
-
-        <div class="media ">
-            <div class="media-left">
-                <img src="https://i.ebayimg.com/images/g/vrAAAOSwpDdVU7C6/s-l400.jpg" class="media-object" style="width:40px">
-            </div>
-            <div class="media-body ml-3">
-                
-                <h4 class="media-heading title m-0">@item.Name</h4>
-                <span style="font-size:12px;" class="m-0 text-success">lúc: @item.Create_at.ToString("dd-MM-yyyy hh:mm:ss")</span>
-                <p class="komen">
-                    @item.CommentDetail<br>
-                    <a href="#">Trả lời</a>
-                </p>
-               
-            </div>
+    var name = '@' + item.Name;
+    <div class="media ">
+        <div class="media-left">
+            <img src="https://i.ebayimg.com/images/g/vrAAAOSwpDdVU7C6/s-l400.jpg" class="media-object" style="width:40px">
         </div>
-   
-    @Html.Action("_getAllSubComment", "Modules", new { Id = item.PostId, parintId = item.Id })
+        <div class="media-body ml-3">
+            <h4 class="media-heading title m-0">@item.Name</h4>
+            <span style="font-size:12px;" class="m-0 text-success">lúc: @item.Create_at.ToString("dd-MM-yyyy hh:mm:ss")</span>
+            <p class="komen">
+                @item.CommentDetail<br> 
+                <a data-toggle="collapse" href="#collapseExample_@item.Id" role="button" aria-expanded="false">Trả lời</a>
+            </p>
+            <div class="collapse" id="collapseExample_@item.Id">
+                <form class="form-inline "  action="~/Site/sendComment" method="post">
+                    <input type="hidden" name="PostId" value="@item.PostId" />
+                    <input type="hidden" name="parentId" value="@item.Id" />
+                    <input type="text" class="form-control" placeholder="tên bạn" name="name" value="" required/>
+                    <input type="hidden" name="slug" value="@ViewBag.slug" />
+                    <div class="form-group">
+                        <textarea rows="2" name="CommentDetail" class="form-control" required> @name.Replace(" ", "")  </textarea>
+                        <button type="submit" class="btn btn-sm btn-primary mb-2 "><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+     
+    @Html.Action("_getAllSubComment", "Modules", new { Id = item.PostId, parintId = item.Id,slug = @ViewBag.slug })
 }
+  

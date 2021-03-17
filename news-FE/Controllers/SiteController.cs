@@ -60,5 +60,7 @@ namespace news_FE.Controllers
             return RedirectToAction("PostDetail", "Site" ,new { slug = slug});
 
         }
+
+
     }
 }

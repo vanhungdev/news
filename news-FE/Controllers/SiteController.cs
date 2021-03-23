@@ -58,9 +58,6 @@ namespace news_FE.Controllers
                 Message.set_flash(objectResult.message.Message, "danger");
             }
             return RedirectToAction("PostDetail", "Site" ,new { slug = slug});
-
         }
-
-
     }
 }

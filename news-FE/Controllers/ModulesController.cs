@@ -18,7 +18,8 @@ namespace news_FE.Controllers
         public ActionResult _PostSuggest()
         {
             string getJsonRepons = SendRequest.sendRequestGET(ApiUrl.urlGetAllPost, null);
-            var ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons).OrderBy(m=>Guid.NewGuid()).ToList().Take(2);       
+            var ListPost = JsonConvert.DeserializeObject<List<Post>>(getJsonRepons)
+                .Where(m=>m.Status==1).OrderBy(m=>Guid.NewGuid()).ToList().Take(2);       
             return View("_PostSuggest", ListPost);
         }
         public ActionResult _allCategory()

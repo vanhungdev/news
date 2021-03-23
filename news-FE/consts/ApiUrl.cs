@@ -101,15 +101,16 @@ namespace news_FE.consts
         /// <summary>
         ///  Url url retrash  method => GET
         /// </summary>
-        public const string urlGetAllPostTrash = domain + "admin/Posts/getAllTopicTrash";
-
-
+        public const string urlGetAllPostTrash = domain + "admin/Posts/getAllPostTrash";
 
         /// <summary>
         ///  Url login POST
         /// </summary>
         public const string urlAuthen = domain+ "api/Users/Authenticate";
-
+        /// <summary>
+        ///  Url login POST
+        /// </summary>
+        public const string urlLogout = domain + "api/Users/logout";
         /// <summary>
         ///  Url getAll User method => GET
         /// </summary>

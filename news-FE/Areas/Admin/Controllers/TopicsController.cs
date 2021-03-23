@@ -51,6 +51,7 @@ namespace news_FE.Areas.Admin.Controllers
                 { "Created_by", topic.Created_by },
                 { "Updated_at", topic.Updated_at.ToString("yyyy-MM-ddTHH:mm:ss")  },
                 { "Updated_by", topic.Created_by},
+                { "Status", topic.Status },
             };
 
             string EditResult = SendRequest.sendRequestPOSTwithJsonContent(ApiUrl.urlEditTopic, topicJson.ToString());
